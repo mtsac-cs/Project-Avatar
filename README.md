@@ -15,4 +15,4 @@ Game dev project for Fall 2020. More info to come
 
 
 ## What next?
-• Clone this project
+• Clone this project ![clone project picture](https://media.discordapp.net/attachments/482767815661584387/772247828885274624/unknown.png?width=1194&height=544)
