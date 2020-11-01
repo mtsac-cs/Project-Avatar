@@ -15,4 +15,4 @@ Game dev project for Fall 2020. More info to come
 
 
 ## What next?
-• Clone this project by following the steps in the picture below: ![clone project picture](https://media.discordapp.net/attachments/482767815661584387/772247828885274624/unknown.png?width=1194&height=544)
+• Learn how to clone the project and start working on the project [by clicking here](https://github.com/mtsac-cs/Project-Avatar/blob/main/Docs/How%20to%20clone%20project.md)
