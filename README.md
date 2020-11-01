@@ -5,6 +5,7 @@ Game dev project for Fall 2020. More info to come
 ### Brief description of game:
 
 **I**magine 2D Legend of Zelda meets Avatar the Last Airbender
+
 • You have four warring regions and your role as the main character is to stop the war.
 
 • You have the ability to reincarnate in between the regions - this mechanic is your means of traversal between the regions.
