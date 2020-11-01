@@ -17,5 +17,6 @@ Game dev project for Fall 2020. More info to come
 • The game plays like a 2D Zelda game:  combat is real-time, you can talk to NPCs to get tidbits of information, there are hostile areas where you fight monsters, etc.
 
 
-## Need help?
+---
+### Need help?
 Check out our Docs to learn all about the project, including how to help work on the game! [More info here](https://github.com/mtsac-cs/Project-Avatar/tree/main/Docs)
