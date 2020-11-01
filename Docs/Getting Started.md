@@ -12,4 +12,4 @@
 
 
 ## What next?
-• Learn how to clone the project and start working on the project [by clicking here](https://github.com/mtsac-cs/Project-Avatar/blob/main/Docs/How%20to%20clone%20project.md)
+• Learn how to clone the project and start contributing [by clicking here](https://github.com/mtsac-cs/Project-Avatar/blob/main/Docs/How%20to%20clone%20project.md)
