@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Public fields accessible by the class methods.  As they are public, 
+    // Unity should give access to change their values as well
     public float moveSpeed;
     public Rigidbody2D rb;
+
+    // Private field only accessible within this class
     private Vector2 moveDirection;
 
     // Update is called once per frame
     void Update()
     {
-        // Processing inputs
+        // Processing inputs...defined below
         ProcessInputs();
     }
 
@@ -22,14 +25,18 @@ public class PlayerMovement : MonoBehaviour
         Move();
     }
 
+    // Will obtain user input and process them to update on viewport
     void ProcessInputs()
     {
+        // Assigns raw values from player axis inputs (x direction and y direction)
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
-        moveDirection = new Vector2(moveX, moveY).normalized; // TODO come back to this
+        // Updates direction of player with player input vectors.  
+        moveDirection = new Vector2(moveX, moveY).normalized; // .normalized makes it so that vertical movement does not move faster than horizontal vs vertical
     }
 
+    // Calculates velocity of player by calculating movement direction with moveSpeed scalar
     void Move()
     {
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
