@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Sprites/Main/Controls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Controls.inputactions'
 
 using System;
 using System.Collections;
