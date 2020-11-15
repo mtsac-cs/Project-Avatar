@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.Behaviors
 {
@@ -9,13 +8,13 @@ namespace Assets.Scripts.Behaviors
     /// </summary>
     public class Interactable : MonoBehaviour
     {
-        public bool isInRange;
-        private Controls controls;
-        public UnityEvent interactAction;
+        private static Controls controls = new Controls();
+        [SerializeField] bool isInRange;
+        [SerializeField] UnityEvent interactAction;
 
         void Start()
         {
-            controls = new Controls();
+            
         }
 
         void Update()
