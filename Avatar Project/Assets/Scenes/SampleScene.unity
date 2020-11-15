@@ -270,6 +270,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34e6a3f50be9d24581ec9d27b38337c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInRange: 0
+  interactAction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &846446307
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -355,6 +359,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3661567802279334901, guid: 8c4beac4a7544fc488aa35548827f65e, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3661567802279334901, guid: 8c4beac4a7544fc488aa35548827f65e, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3661567802279334907, guid: 8c4beac4a7544fc488aa35548827f65e, type: 3}
