@@ -33,7 +33,8 @@ namespace Assets.Scripts.Player
 
         private void CheckPlayerSpriteValid()
         {
-            if (playerSprite is null) throw new Exception("PlayerSprite was not set! It must be set to use the class");
+            if (playerSprite is null) 
+                throw new Exception("PlayerSprite was not set! It must be set for PlayerData class to work properly");
         }
 
         private void AddPlayerMovement()
