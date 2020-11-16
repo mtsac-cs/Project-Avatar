@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Assets.Scripts.Behaviors
@@ -8,14 +9,18 @@ namespace Assets.Scripts.Behaviors
     /// </summary>
     public class Interactable : MonoBehaviour
     {
-        private static Controls controls;
-        [SerializeField] bool isInRange;
-        [SerializeField] UnityEvent interactAction;
+        private Controls controls;
+        public bool isInRange;
+        public UnityEvent interactAction;
+
+        void Awake()
+        {
+            
+        }
 
         void Start()
         {
-            if (controls is null)
-                controls = new Controls();
+            controls = Game.instance.controls;
         }
 
         void Update()
@@ -27,10 +32,10 @@ namespace Assets.Scripts.Behaviors
         {
             if (!isInRange) return;
 
-            var interactKey = controls.Player.Interact;
+            var interactKeyValue = controls.Player.Interact.ReadValue<float>();
             const float isPressed = 1;
 
-            if (interactKey.ReadValue<float>() == isPressed)
+            if (interactKeyValue == isPressed)
                 FireInteractEvent();
         }
 
@@ -49,5 +54,10 @@ namespace Assets.Scripts.Behaviors
         }
 
         private bool IsCollisionWithPlayer(Collider2D collision) => collision.gameObject.CompareTag("Player");
+
+        public void OnInteraction()
+        {
+            throw new NotImplementedException("You need to override OnInteraction and specify player interaction");
+        }
     }
 }

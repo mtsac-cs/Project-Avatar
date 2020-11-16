@@ -13,25 +13,13 @@ namespace Assets.Scripts.Player
         [NonSerialized] public Controls controls;
         private Rigidbody2D rb;
 
-        void Awake()
-        {
-            controls = new Controls();
-        }
-        private void OnEnable()
-        {
-            controls.Enable();
-        }
-        private void OnDisable()
-        {
-            controls.Disable();
-        }
-        // Start is called before the first frame update
+
         void Start()
         {
+            controls = Game.instance.controls;
             rb = GetComponent<Rigidbody2D>();
         }
 
-        // Update is called once per frame
         void Update()
         {
             MovePlayer();
@@ -39,14 +27,14 @@ namespace Assets.Scripts.Player
 
         void MovePlayer()
         {
-            Vector2 movementInput = controls.Player.Move.ReadValue<Vector2>();
-            movementInput = movementInput.normalized;
+            Vector2 movementInput = controls.Player.Move.ReadValue<Vector2>().normalized;
+            //movementInput = movementInput.normalized;
             rb.AddForce(movementInput * GetMovementSpeed());
         }
 
         float GetMovementSpeed()
         {
-            float sprintKeyValue = controls.Player.Sprint.ReadValue<float>();
+            var sprintKeyValue = controls.Player.Sprint.ReadValue<float>();
             const float keyPressed = 1;
 
             bool isSprintKeyPressed = (sprintKeyValue == keyPressed);

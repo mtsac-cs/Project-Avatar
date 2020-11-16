@@ -11,9 +11,36 @@ namespace Assets.Scripts
     /// </summary>
     public class Game : MonoBehaviour
     {
+        public Controls controls;
+        public PlayerData playerData;
         public static Game instance;
-        public Player.PlayerData player;
-        
+
+
+        #region Unity Events
+
+        void Awake()
+        {
+            if (instance is null)
+                instance = this;
+
+            controls = new Controls();
+        }
+
+        void Start()
+        {
+            
+        }
+
+
+        void Update()
+        {
+            if (playerData is null)
+                SetPlayerData();
+        }
+
+        private void OnEnable() => controls.Enable();
+        private void OnDisable() => controls.Disable();
+
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         static void OnBeforeSceneLoadRuntimeMethod()
@@ -27,40 +54,25 @@ namespace Assets.Scripts
             AddGameToScene();
         }
 
+        #endregion
+
+
         private static void AddGameToScene()
         {
             var gameObject = Instantiate(new GameObject());
             gameObject.AddComponent<Game>();
         }
 
-
-        void Awake()
-        {
-            if (instance is null)
-                instance = this;
-        }
-
-        void Start()
-        {
-            
-        }
-
-
-        void Update()
-        {
-            if (player is null)
-                SetPlayerData();
-        }
-
         private void SetPlayerData()
         {
             var allPlayers = SceneManager.GetActiveScene().FindAllGameObjectsWithTag("Player");
             var playerGameObject = allPlayers[0];
-            var tempPlayer = playerGameObject.GetComponent<PlayerData>();
+            var playerData = playerGameObject.GetComponent<PlayerData>();
 
-            if (tempPlayer is null) throw new Exception("Game object failed to get the Player from scene");
+            if (playerData != null)
+                playerData = this.playerData;
             else
-                player = tempPlayer;
+                throw new Exception("Game object failed to get the Player from scene");
         }
     }
 }
