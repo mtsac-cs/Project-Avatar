@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
@@ -7,11 +8,15 @@ namespace Assets.Scripts.Player
     /// </summary>
     public class PlayerData : MonoBehaviour
     {
-        public Survival survival;
+        public GameObject playerSprite;
+        [NonSerialized] public Survival survival;
+        [NonSerialized] public PlayerMovement playerMovement;
+
 
         void Awake()
         {
-
+            CheckPlayerSpriteValid();
+            AddPlayerMovement();
         }
 
         // Start is called before the first frame update
@@ -24,6 +29,17 @@ namespace Assets.Scripts.Player
         void Update()
         {
 
+        }
+
+        private void CheckPlayerSpriteValid()
+        {
+            if (playerSprite is null) throw new Exception("PlayerSprite was not set! It must be set to use the class");
+        }
+
+        private void AddPlayerMovement()
+        {
+            playerSprite.AddComponent<PlayerMovement>();
+            playerMovement = playerSprite.GetComponent<PlayerMovement>();
         }
     }
 }

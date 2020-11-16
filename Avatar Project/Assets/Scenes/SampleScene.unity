@@ -357,6 +357,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1645029449301626263, guid: 8c4beac4a7544fc488aa35548827f65e, type: 3}
+      propertyPath: playerSprite
+      value: 
+      objectReference: {fileID: 1020444050}
     - target: {fileID: 3661567802279334901, guid: 8c4beac4a7544fc488aa35548827f65e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -409,5 +413,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3661567802279334900, guid: 8c4beac4a7544fc488aa35548827f65e, type: 3}
+    - {fileID: 7958895826895203814, guid: 8c4beac4a7544fc488aa35548827f65e, type: 3}
+    - {fileID: 4644919993731300947, guid: 8c4beac4a7544fc488aa35548827f65e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8c4beac4a7544fc488aa35548827f65e, type: 3}
+--- !u!1 &1020444050 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3661567802279334901, guid: 8c4beac4a7544fc488aa35548827f65e, type: 3}
+  m_PrefabInstance: {fileID: 863799830}
+  m_PrefabAsset: {fileID: 0}

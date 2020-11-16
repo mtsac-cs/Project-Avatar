@@ -12,12 +12,12 @@ namespace Assets.Scripts
 
         void Awake()
         {
-            instance = this;
+            
         }
 
         void Start()
         {
-            
+            instance = this;
         }
 
         void Update()

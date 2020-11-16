@@ -91,11 +91,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3661567802279334907}
-  - component: {fileID: 3661567802279334900}
   - component: {fileID: 4242357249238349687}
   - component: {fileID: 8994683948238592981}
-  - component: {fileID: 7958895826895203814}
-  - component: {fileID: 4644919993731300947}
+  - component: {fileID: 5946255999050028125}
+  - component: {fileID: 1645029449301626263}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -119,20 +118,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3661567802279334900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3661567802279334901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27f339999f365ae47a585aee3b9634d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  sprintSpeed: 5
 --- !u!50 &4242357249238349687
 Rigidbody2D:
   serializedVersion: 4
@@ -180,7 +165,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.18}
   m_EdgeRadius: 0
---- !u!114 &7958895826895203814
+--- !u!114 &5946255999050028125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3661567802279334901}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64288b5825d27cd438ace508374906ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1645029449301626263
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,26 +186,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3661567802279334901}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b09eb8959ef354747bec8e150994eeaa, type: 3}
+  m_Script: {fileID: 11500000, guid: 19f37d04043c3cf42915638095406197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInteracting: 0
-  interactKeyPressed: 0
-  isOverlapInteract: 0
-  isCollisionInteract: 0
---- !u!114 &4644919993731300947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3661567802279334901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9197ed0858cc9b541be85bbaeaa83840, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
+  playerMovement: {fileID: 0}
 --- !u!1 &4369095937162152737
 GameObject:
   m_ObjectHideFlags: 0

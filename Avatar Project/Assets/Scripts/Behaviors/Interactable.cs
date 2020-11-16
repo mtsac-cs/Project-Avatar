@@ -8,13 +8,14 @@ namespace Assets.Scripts.Behaviors
     /// </summary>
     public class Interactable : MonoBehaviour
     {
-        private static Controls controls = new Controls();
+        private static Controls controls;
         [SerializeField] bool isInRange;
         [SerializeField] UnityEvent interactAction;
 
         void Start()
         {
-            
+            if (controls is null)
+                controls = new Controls();
         }
 
         void Update()

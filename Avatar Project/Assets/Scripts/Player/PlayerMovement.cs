@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
@@ -7,10 +8,11 @@ namespace Assets.Scripts.Player
     /// </summary>
     public class PlayerMovement : MonoBehaviour
     {
-        public float speed = 5f;
-        public float sprintSpeed = 5f;
-        public Controls controls;
+        [NonSerialized] public float walkSpeed = 5f;
+        [NonSerialized] public float sprintSpeed = 10f;
+        [NonSerialized] public Controls controls;
         private Rigidbody2D rb;
+
         void Awake()
         {
             controls = new Controls();
@@ -39,12 +41,16 @@ namespace Assets.Scripts.Player
         {
             Vector2 movementInput = controls.Player.Move.ReadValue<Vector2>();
             movementInput = movementInput.normalized;
-            //Input.GetKeyDown(KeyCode.Space);
-            // Vector3 curPos = transform.position;
-            // curPos.x += movementInput*speed*Time.deltaTime;
-            // curPos.y += movementInput*speed*Time.deltaTime;
-            //transform.Translate(movementInput*speed*Time.deltaTime);
-            rb.AddForce(movementInput * speed);
+            rb.AddForce(movementInput * GetMovementSpeed());
+        }
+
+        float GetMovementSpeed()
+        {
+            float sprintKeyValue = controls.Player.Sprint.ReadValue<float>();
+            const float keyPressed = 1;
+
+            bool isSprintKeyPressed = (sprintKeyValue == keyPressed);
+            return isSprintKeyPressed ? sprintSpeed : walkSpeed;
         }
     }
 }
