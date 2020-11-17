@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -9,71 +10,62 @@ namespace Assets.Scripts
     /// </summary>
     public class JsonFile
     {
-        private string filePath;
+        string fileName;
 
-        public JsonFile(string filePath)
+        public JsonFile(string fileName)
         {
-            this.filePath = filePath;
+            this.fileName = fileName;
+        }
+
+        public void Save<T>(T jsonObject)
+        {
+            string json = JsonUtility.ToJson(jsonObject, true);
+            WriteToFile(json);
+        }
+
+        private void WriteToFile(string json)
+        {
+            string path = GetFilePath();
+            Debug.Log(path);
+            FileStream fileStream = new FileStream(path, FileMode.Create);
+
+            using (StreamWriter writer = new StreamWriter(fileStream))
+            {
+                writer.Write(json);
+            }
+        }
+
+        private string GetFilePath()
+        {
+            //string path = Application.persistentDataPath + "/ " + fileName;  //use this during release
+            string path = Environment.CurrentDirectory + "/" + fileName;
+            return path;
         }
 
 
-        //Originally from: https://github.com/SubnauticaModding/SMLHelper/blob/master/SMLHelper/Utility/JsonUtils.cs
-        //Modified for our purposes
-        /*public void Load<T>(T jsonObject, string path = null, bool createFileIfNotExist = true,
-            params JsonConverter[] jsonConverters) where T : class
+        public void Load<T>(T jsonObject)
         {
-            if (!createFileIfNotExist)
-                Guard.ThrowIfPathIsNull(path);
+            string path = GetFilePath();
+            if (!File.Exists(path))
+                Save<T>(jsonObject);
 
+            string json = ReadFromFile();
+            JsonUtility.FromJsonOverwrite(json, jsonObject);
+        }
+
+        private string ReadFromFile()
+        {
+            string json = null;
+            string path = GetFilePath();
             if (File.Exists(path))
             {
-                PopulateJsonObject(jsonObject, path, jsonConverters);
+                using (StreamReader reader = new StreamReader(path))
+                {
+                    json = reader.ReadToEnd();
+                }
             }
-            else if (createFileIfNotExist)
-            {
-                Save(jsonObject, path, jsonConverters);
-            }
+
+            return json;
         }
-
-        private void PopulateJsonObject<T>(T jsonObject, string path, params JsonConverter[] jsonConverters)
-        {
-            var jsonSerializerSettings = new JsonSerializerSettings()
-            {
-                Converters = jsonConverters
-            };
-
-            string serializedJson = File.ReadAllText(path);
-            JsonConvert.PopulateObject(
-                serializedJson, jsonObject, jsonSerializerSettings
-            );
-        }
-
-        //Originally from: https://github.com/SubnauticaModding/SMLHelper/blob/master/SMLHelper/Utility/JsonUtils.cs
-        //Modified for our purposes
-        public void Save<T>(T jsonObject, string path = null, params JsonConverter[] jsonConverters) where T : class
-        {
-            Guard.ThrowIfPathIsNull(path);
-
-            var stringBuilder = new StringBuilder();
-            var stringWriter = new StringWriter(stringBuilder);
-            var jsonTextWriter = new JsonTextWriter(stringWriter)
-            {
-                Indentation = 4,
-                Formatting = Formatting.Indented
-            };
-
-            using (jsonTextWriter)
-            {
-                var jsonSerializer = new JsonSerializer();
-                foreach (var jsonConverter in jsonConverters)
-                    jsonSerializer.Converters.Add(jsonConverter);
-
-                jsonSerializer.Serialize(jsonTextWriter, jsonObject);
-            }
-
-            var fileInfo = new FileInfo(path);
-            fileInfo.Directory.Create();
-            File.WriteAllText(path, stringBuilder.ToString());
-        }*/
     }
 }

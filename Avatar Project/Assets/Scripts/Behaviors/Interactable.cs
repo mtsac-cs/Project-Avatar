@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Assets.Scripts.Player;
+using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -87,6 +89,7 @@ namespace Assets.Scripts.Behaviors
             }
         }
 
+        bool swap = true;
         private void InvokeActions()
         {
             interactAction.Invoke();

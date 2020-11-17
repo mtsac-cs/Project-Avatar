@@ -21,7 +21,8 @@ namespace Assets.Scripts.Player
         {
             CheckPlayerSpriteValid();
 
-            AddPlayerStats();
+            LoadPlayerStats();
+            LoadPlayerSurvival();
             AddPlayerMovement();
         }
 
@@ -50,9 +51,14 @@ namespace Assets.Scripts.Player
             playerMovement = playerSprite.GetComponent<PlayerMovement>();
         }
 
-        private void AddPlayerStats()
+        private void LoadPlayerStats()
         {
             playerStats = new PlayerStats();
+        }
+
+        private void LoadPlayerSurvival()
+        {
+            survival = new Survival();
         }
     }
 }
