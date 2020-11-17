@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1557733153307557165}
   - component: {fileID: 4593415072690652132}
-  - component: {fileID: 547708618918239550}
+  - component: {fileID: 8111257226354452214}
   m_Layer: 0
   m_Name: InteractableCircle
   m_TagString: Untagged
@@ -48,7 +48,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &547708618918239550
+--- !u!114 &8111257226354452214
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

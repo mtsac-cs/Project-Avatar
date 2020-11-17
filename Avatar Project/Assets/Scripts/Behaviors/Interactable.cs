@@ -10,9 +10,13 @@ namespace Assets.Scripts.Behaviors
     public class Interactable : MonoBehaviour
     {
         private Controls controls;
-        public bool isInRange;
-        public UnityEvent interactAction;
 
+        public InteractionType interactionType;
+        public UnityEvent interactAction;
+        [NonSerialized] public bool isInRange;
+
+
+        #region Unity Events
         void Awake()
         {
             
@@ -28,19 +32,6 @@ namespace Assets.Scripts.Behaviors
             CheckForInteraction();
         }
 
-        void CheckForInteraction()
-        {
-            if (!isInRange) return;
-
-            var interactKeyValue = controls.Player.Interact.ReadValue<float>();
-            const float isPressed = 1;
-
-            if (interactKeyValue == isPressed)
-                FireInteractEvent();
-        }
-
-        void FireInteractEvent() => interactAction.Invoke();
-
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (IsCollisionWithPlayer(collision))
@@ -53,11 +44,64 @@ namespace Assets.Scripts.Behaviors
                 isInRange = false;
         }
 
+        #endregion
+
+
+        private bool interactionStarted;
+        private bool keyDownFired;
+
         private bool IsCollisionWithPlayer(Collider2D collision) => collision.gameObject.CompareTag("Player");
 
-        public void OnInteraction()
+        void CheckForInteraction()
         {
-            throw new NotImplementedException("You need to override OnInteraction and specify player interaction");
+            if (!isInRange) return;
+
+            var interactKeyValue = controls.Player.Interact.ReadValue<float>();
+            const float isPressed = 1;
+
+            if (interactKeyValue == isPressed)
+            {
+                FireInteractEvent();
+            }
+            else
+            {
+                if (interactionStarted)
+                {
+                    FireKeyUpInteraction();
+                    InteractionCleanup();
+                }
+            }
+        }
+
+        void FireInteractEvent()
+        {
+            interactionStarted = true;
+
+            if (interactionType == InteractionType.Held)
+                InvokeActions();
+
+            if (CanFireKeyDown())
+            {
+                FireKeyDownInteraction();
+                keyDownFired = true;
+            }
+        }
+
+        private void InvokeActions()
+        {
+            interactAction.Invoke();
+        }
+
+        private bool CanFireKeyDown() => (interactionType == InteractionType.KeyDown && !keyDownFired);
+
+        private void FireKeyDownInteraction() => InvokeActions();
+
+        private void FireKeyUpInteraction() => InvokeActions();
+
+        private void InteractionCleanup()
+        {
+            keyDownFired = false;
+            interactionStarted = false;
         }
     }
 }

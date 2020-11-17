@@ -10,6 +10,8 @@ namespace Assets.Scripts.Player
     {
         public GameObject playerSprite;
         [NonSerialized] public Survival survival;
+        [NonSerialized] public PlayerLevel playerLevel;
+        [NonSerialized] public PlayerStats playerStats;
         [NonSerialized] public PlayerMovement playerMovement;
 
         
@@ -18,6 +20,8 @@ namespace Assets.Scripts.Player
         void Awake()
         {
             CheckPlayerSpriteValid();
+
+            AddPlayerStats();
             AddPlayerMovement();
         }
 
@@ -44,6 +48,11 @@ namespace Assets.Scripts.Player
         {
             playerSprite.AddComponent<PlayerMovement>();
             playerMovement = playerSprite.GetComponent<PlayerMovement>();
+        }
+
+        private void AddPlayerStats()
+        {
+            playerStats = new PlayerStats();
         }
     }
 }

@@ -28,14 +28,13 @@ namespace Assets.Scripts
 
         void Start()
         {
-            
+            SetPlayerData();
         }
 
 
         void Update()
         {
-            if (playerData is null)
-                SetPlayerData();
+            
         }
 
         private void OnEnable() => controls.Enable();
@@ -70,9 +69,9 @@ namespace Assets.Scripts
             var playerData = playerGameObject.GetComponent<PlayerData>();
 
             if (playerData != null)
-                playerData = this.playerData;
+                this.playerData = playerData;
             else
-                throw new Exception("Game object failed to get the Player from scene");
+                throw new Exception("Game class failed to get the Player from scene");
         }
     }
 }

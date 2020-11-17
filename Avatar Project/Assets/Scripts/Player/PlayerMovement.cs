@@ -8,10 +8,10 @@ namespace Assets.Scripts.Player
     /// </summary>
     public class PlayerMovement : MonoBehaviour
     {
+        private Rigidbody2D rb;
         [NonSerialized] public float walkSpeed = 5f;
         [NonSerialized] public float sprintSpeed = 10f;
         [NonSerialized] public Controls controls;
-        private Rigidbody2D rb;
 
 
         void Start()
@@ -28,7 +28,6 @@ namespace Assets.Scripts.Player
         void MovePlayer()
         {
             Vector2 movementInput = controls.Player.Move.ReadValue<Vector2>().normalized;
-            //movementInput = movementInput.normalized;
             rb.AddForce(movementInput * GetMovementSpeed());
         }
 
@@ -38,7 +37,25 @@ namespace Assets.Scripts.Player
             const float keyPressed = 1;
 
             bool isSprintKeyPressed = (sprintKeyValue == keyPressed);
-            return isSprintKeyPressed ? sprintSpeed : walkSpeed;
+            var speed = isSprintKeyPressed ? sprintSpeed : walkSpeed;
+
+            return speed + GetSpeedBonusFromStats();
+        }
+
+        float GetSpeedBonusFromStats()
+        {
+            var player = Game.instance.playerData;
+            var movementStat = player.playerStats.movementSpeed;
+            var statLevel = movementStat.StatLevel;
+
+            var bonus = CalcBonusSpeedFromStats(statLevel);
+
+            return bonus;
+        }
+
+        float CalcBonusSpeedFromStats(int statLevel)
+        {
+            return statLevel / 2;
         }
     }
 }

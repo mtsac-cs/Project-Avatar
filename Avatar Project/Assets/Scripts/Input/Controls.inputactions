@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "attack",
+                    "name": "Attack",
                     "type": "Button",
                     "id": "dfff3c47-c86f-4bb1-9c31-d588da26b99e",
                     "expectedControlType": "Button",
@@ -31,8 +31,16 @@
                 },
                 {
                     "name": "Interact",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "871b9ff5-d0a1-407d-95d8-9ae056119493",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Roll",
+                    "type": "PassThrough",
+                    "id": "51efe51a-b852-464d-994f-bacac2934bcc",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -101,7 +109,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & Mouse",
-                    "action": "attack",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -124,6 +132,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0184a536-8f60-4961-96cf-ff3647ed631c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Roll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
