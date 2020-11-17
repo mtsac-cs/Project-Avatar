@@ -1,5 +1,8 @@
 ﻿namespace Assets.Scripts.Player
 {
+    /// <summary>
+    /// Class manages player leveling
+    /// </summary>
     public class PlayerLevel
     {
         public int currentLevel;

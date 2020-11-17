@@ -2,6 +2,9 @@
 
 namespace Assets.Scripts.Player
 {
+    /// <summary>
+    /// Manages all player attributes
+    /// </summary>
     public class PlayerStats
     {
         public PlayerAttribute attack, defense, movementSpeed;

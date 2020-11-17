@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Base JSON file for use with serializable data
+    /// </summary>
     public class JsonFile
     {
         private string filePath;
