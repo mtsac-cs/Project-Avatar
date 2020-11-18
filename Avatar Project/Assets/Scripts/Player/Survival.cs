@@ -15,7 +15,7 @@ namespace Assets.Scripts.Player
             set { SetHealth(value); }
         }
 
-        private float maxHealth = 10;
+        public float maxHealth = 10;
         private bool canRegenHealth;
         private float healthRegenAmount = 1; //How much health to regen each time health is regenerated
         private float healthTimeBetweenRegen = 3; //How long to wait per regeneration. Default 3 sec
@@ -29,7 +29,7 @@ namespace Assets.Scripts.Player
             set { SetStamina(value); }
         }
 
-        private float maxStamina = 10;
+        public float maxStamina = 10;
         private bool canRegenStamina;
         private float staminaRegenAmount = 1; //How much stamina to regen each time stamina is regenerated
         private float staminaTimeBetweenRegen = 3; //How long to wait per regeneration. Default 3 sec

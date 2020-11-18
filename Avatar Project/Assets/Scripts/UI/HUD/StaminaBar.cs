@@ -3,7 +3,7 @@ using Assets.Scripts.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class StaminaBar : MonoBehaviour
 {
     private PlayerData playerData;
     public Slider statSlider;
@@ -15,8 +15,8 @@ public class HealthBar : MonoBehaviour
 
     void Update()
     {
-        var statValue = playerData.survival.Health;
-        var maxStatValue = playerData.survival.maxHealth;
+        var statValue = playerData.survival.Stamina;
+        var maxStatValue = playerData.survival.maxStamina;
         var percentFull = statValue / maxStatValue;
 
         statSlider.value = percentFull;
