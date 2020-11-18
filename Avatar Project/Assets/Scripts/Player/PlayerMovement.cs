@@ -37,25 +37,17 @@ namespace Assets.Scripts.Player
             const float keyPressed = 1;
 
             bool isSprintKeyPressed = (sprintKeyValue == keyPressed);
-            var speed = isSprintKeyPressed ? sprintSpeed : walkSpeed;
+            float speed = walkSpeed;
 
-            return speed + GetSpeedBonusFromStats();
+            if (isSprintKeyPressed && CanPlayerSprint())
+                speed = sprintSpeed;
+
+            return speed;
         }
 
-        float GetSpeedBonusFromStats()
+        bool CanPlayerSprint()
         {
-            var player = Game.instance.playerData;
-            var movementStat = player.playerStats.movementSpeed;
-            var statLevel = movementStat.StatLevel;
-
-            var bonus = CalcBonusSpeedFromStats(statLevel);
-
-            return bonus;
-        }
-
-        float CalcBonusSpeedFromStats(int statLevel)
-        {
-            return statLevel / 2;
+            return Game.instance.playerData.survival.Stamina > 0;
         }
     }
 }

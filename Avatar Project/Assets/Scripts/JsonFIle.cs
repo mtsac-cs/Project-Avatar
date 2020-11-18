@@ -38,7 +38,7 @@ namespace Assets.Scripts
         private string GetFilePath()
         {
             //string path = Application.persistentDataPath + "/ " + fileName;  //use this during release
-            string path = Environment.CurrentDirectory + "/" + fileName;
+            string path = Environment.CurrentDirectory + "/JSON Files/" + fileName;
             return path;
         }
 

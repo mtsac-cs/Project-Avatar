@@ -9,26 +9,23 @@ namespace Assets.Scripts.Player
     public class PlayerData : MonoBehaviour
     {
         public GameObject playerSprite;
-        [NonSerialized] public Survival survival;
-        [NonSerialized] public PlayerLevel playerLevel;
-        [NonSerialized] public PlayerStats playerStats;
-        [NonSerialized] public PlayerMovement playerMovement;
-
+        public Survival survival;
+        public PlayerMovement playerMovement;
         
+
         #region Unity Events
 
         void Awake()
         {
             CheckPlayerSpriteValid();
 
-            LoadPlayerStats();
             LoadPlayerSurvival();
             AddPlayerMovement();
         }
 
         void Start()
         {
-
+            
         }
 
         void Update()
@@ -51,14 +48,11 @@ namespace Assets.Scripts.Player
             playerMovement = playerSprite.GetComponent<PlayerMovement>();
         }
 
-        private void LoadPlayerStats()
-        {
-            playerStats = new PlayerStats();
-        }
 
         private void LoadPlayerSurvival()
         {
-            survival = new Survival();
+            playerSprite.AddComponent<Survival>();
+            survival = playerSprite.GetComponent<Survival>();
         }
     }
 }

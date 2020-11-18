@@ -93,6 +93,7 @@ namespace Assets.Scripts.Behaviors
         private void InvokeActions()
         {
             interactAction.Invoke();
+            Debug.Log("Interaction Event Fired");
         }
 
         private bool CanFireKeyDown() => (interactionType == InteractionType.KeyDown && !keyDownFired);
