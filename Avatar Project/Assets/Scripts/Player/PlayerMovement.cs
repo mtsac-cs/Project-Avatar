@@ -40,7 +40,10 @@ namespace Assets.Scripts.Player
             float speed = walkSpeed;
 
             if (isSprintKeyPressed && CanPlayerSprint())
+            {
                 speed = sprintSpeed;
+                ActivateSprint();
+            }
 
             return speed;
         }
@@ -48,6 +51,23 @@ namespace Assets.Scripts.Player
         bool CanPlayerSprint()
         {
             return Game.instance.playerData.survival.Stamina > 0;
+        }
+
+        void ActivateSprint()
+        {
+            var drain = CalculateStaminaDrain();
+            DrainStamina(drain);
+        }
+
+        float CalculateStaminaDrain()
+        {
+            float amount = (sprintSpeed* Time.deltaTime)/2;
+            return amount;
+        }
+
+        void DrainStamina(float amount)
+        {
+             Game.instance.playerData.survival.Stamina -= amount; ;
         }
     }
 }

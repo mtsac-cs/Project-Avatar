@@ -20,11 +20,6 @@ namespace Assets.Scripts.Behaviors
 
 
         #region Unity Events
-        void Awake()
-        {
-            
-        }
-
         void Start()
         {
             controls = Game.instance.controls;
@@ -62,7 +57,7 @@ namespace Assets.Scripts.Behaviors
             var interactKeyValue = controls.Player.Interact.ReadValue<float>();
             const float isPressed = 1;
 
-            if (interactKeyValue == isPressed || interactWhenInRange == true)
+            if (interactKeyValue == isPressed || interactWhenInRange)
             {
                 FireInteractEvent();
             }
@@ -80,7 +75,7 @@ namespace Assets.Scripts.Behaviors
         {
             interactionStarted = true;
 
-            if (interactionType == InteractionType.Held)
+            if (interactionType == InteractionType.Continuous)
                 InvokeActions();
 
             if (CanFireKeyDown())
@@ -97,7 +92,7 @@ namespace Assets.Scripts.Behaviors
             Debug.Log("Interaction Event Fired");
         }
 
-        private bool CanFireKeyDown() => (interactionType == InteractionType.KeyDown && !keyDownFired);
+        private bool CanFireKeyDown() => (interactionType == InteractionType.Started && !keyDownFired);
 
         private void FireKeyDownInteraction() => InvokeActions();
 

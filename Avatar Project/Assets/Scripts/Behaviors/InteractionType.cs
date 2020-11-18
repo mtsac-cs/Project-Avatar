@@ -2,8 +2,8 @@
 {
     public enum InteractionType
     {
-        KeyDown,
-        KeyUp,
-        Held
+        Started,
+        Ended,
+        Continuous
     }
 }

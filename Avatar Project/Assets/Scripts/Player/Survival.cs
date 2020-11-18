@@ -8,30 +8,32 @@ namespace Assets.Scripts.Player
     public class Survival : MonoBehaviour
     {
         #region Properties
-        private float health = 0;
+        private float health = 10;
         public float Health 
         {
             get { return health; }
             set { SetHealth(value); }
         }
 
-        public float maxHealth = 10;
-        public float healthRegenAmount = 1; //How much health to regen each time health is regenerated
-        public float healthTimeBetweenRegen = 3; //How long to wait per regeneration. Default 3 sec
-        public float healthRegenDelayTime = 10; //After taking damage, how long to wait before starting regen
+        private float maxHealth = 10;
+        private bool canRegenHealth;
+        private float healthRegenAmount = 1; //How much health to regen each time health is regenerated
+        private float healthTimeBetweenRegen = 3; //How long to wait per regeneration. Default 3 sec
+        private float healthRegenDelayTime = 10; //After taking damage, how long to wait before starting regen
 
 
-        private float stamina;
+        private float stamina = 10;
         public float Stamina
         {
             get { return stamina; }
             set { SetStamina(value); }
         }
 
-        public float maxStamina = 10;
-        public float staminaRegenAmount = 1; //How much stamina to regen each time stamina is regenerated
-        public float staminaTimeBetweenRegen = 3; //How long to wait per regeneration. Default 3 sec
-        public float staminaRegenDelayTime = 1.5f; //After using stamina, how long to wait before starting regen
+        private float maxStamina = 10;
+        private bool canRegenStamina;
+        private float staminaRegenAmount = 1; //How much stamina to regen each time stamina is regenerated
+        private float staminaTimeBetweenRegen = 3; //How long to wait per regeneration. Default 3 sec
+        private float staminaRegenDelayTime = 1.5f; //After using stamina, how long to wait before starting regen
         #endregion
 
 
@@ -64,6 +66,7 @@ namespace Assets.Scripts.Player
             
             timeToNextStaminaRegen = Time.time + staminaTimeBetweenRegen;
             Regen(ref stamina, staminaRegenAmount, maxStamina);  //referencing stamina field instead of property
+            Debug.Log("Stamina " + Stamina);
         }
 
 

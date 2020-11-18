@@ -24,11 +24,12 @@ namespace Assets.Scripts
                 instance = this;
 
             controls = new Controls();
+            SetPlayerData();
         }
 
         void Start()
         {
-            SetPlayerData();
+            
         }
 
 
