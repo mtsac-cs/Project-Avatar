@@ -54,8 +54,6 @@ namespace Assets.Scripts.Player
 
             timeToNextHealthRegen = Time.time + healthTimeBetweenRegen;
             Regen(ref health, healthRegenAmount, maxHealth);  //referencing health field instead of property
-
-            Debug.Log("Health: " + Health);
         }
 
 

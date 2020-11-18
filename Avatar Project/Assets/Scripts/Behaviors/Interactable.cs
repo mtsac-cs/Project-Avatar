@@ -14,6 +14,7 @@ namespace Assets.Scripts.Behaviors
         private Controls controls;
 
         public InteractionType interactionType;
+        public bool interactWhenInRange = false;
         public UnityEvent interactAction;
         [NonSerialized] public bool isInRange;
 
@@ -61,7 +62,7 @@ namespace Assets.Scripts.Behaviors
             var interactKeyValue = controls.Player.Interact.ReadValue<float>();
             const float isPressed = 1;
 
-            if (interactKeyValue == isPressed)
+            if (interactKeyValue == isPressed || interactWhenInRange == true)
             {
                 FireInteractEvent();
             }
