@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8994683948238592981}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,7 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f37d04043c3cf42915638095406197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSprite: {fileID: 0}
+  playerSprite: {fileID: 3661567802279334901}
+  survival: {fileID: 0}
+  playerMovement: {fileID: 0}
 --- !u!50 &4242357249238349687
 Rigidbody2D:
   serializedVersion: 4

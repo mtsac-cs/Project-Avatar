@@ -17,6 +17,7 @@ namespace Assets.Scripts.Player
 
         void Awake()
         {
+            //TODO: try to set playerSprite programatically
             CheckPlayerSpriteValid();
 
             LoadPlayerSurvival();
