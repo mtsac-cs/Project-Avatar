@@ -26,7 +26,8 @@ namespace Assets.Scripts.Player
 
         void Start()
         {
-            
+            //Trying to save player data. Not currently working
+            //Serializer.SaveToFile<PlayerData>(this, Environment.CurrentDirectory + "\\playerSave.json");
         }
 
         void Update()

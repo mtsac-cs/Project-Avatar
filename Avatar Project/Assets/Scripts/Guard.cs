@@ -13,5 +13,13 @@ namespace Assets.Scripts
             if (objectToCheck is null)
                 throw new ArgumentException(exceptionMsg, argName);
         }
+
+        public static void ThrowIfStringIsNull(string str, string message)
+        {
+            if (String.IsNullOrEmpty(str))
+            {
+                throw new Exception(message);
+            }
+        }
     }
 }

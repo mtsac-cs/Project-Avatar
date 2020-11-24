@@ -11,7 +11,7 @@ namespace Assets.Scripts
     /// </summary>
     public class Game : MonoBehaviour
     {
-        public Controls controls;
+        [NonSerialized] public Controls controls;
         public PlayerData playerData;
         public static Game instance;
 

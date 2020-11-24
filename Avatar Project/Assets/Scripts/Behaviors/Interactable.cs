@@ -85,7 +85,6 @@ namespace Assets.Scripts.Behaviors
             }
         }
 
-        bool swap = true;
         private void InvokeActions()
         {
             interactAction.Invoke();
