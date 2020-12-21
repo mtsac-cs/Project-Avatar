@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Assets.Scripts.Stats;
 
 namespace Assets.Scripts.Player
 {
@@ -8,6 +9,7 @@ namespace Assets.Scripts.Player
     /// </summary>
     public class PlayerData : MonoBehaviour
     {
+        public CharacterStats playerStats;
         public GameObject playerSprite;
         public Survival survival;
         public PlayerMovement playerMovement;
